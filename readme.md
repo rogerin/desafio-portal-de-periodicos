@@ -50,9 +50,96 @@ A solução buscará artigos relevantes, resumirá o conteúdo e retornará dire
 - **AWS EC2**: Hospeda o n8n para gerenciar a comunicação.
 - **WhatsApp API**: Interface para interação com os usuários.
 - **OpenAI GPT-4**: Gera resumos simplificados dos artigos.
+---
+## Tabela de Preços do GPT-4o-mini
+
+O custo por token no modelo **GPT-4o-mini** é muito acessível, permitindo realizar diversas solicitações com baixo custo. Abaixo, segue a tabela de preços:
+
+| **Tipo de Solicitação**           | **Preço por 1.000 tokens (USD)** |
+|-----------------------------------|----------------------------------|
+| Entrada + Saída (Combined)        | $0.0015                         |
+
+> **Nota**: 
+> - Tokens incluem palavras do prompt (entrada) e da resposta (saída).
+> - Aproximadamente, 1.000 tokens correspondem a 750 palavras.
+
+---
+
+## Simulação de Solicitação
+
+### Suposições
+1. **Tokens de Entrada (Prompt)**: 200 tokens  
+   - Exemplo: O texto do resumo do artigo enviado para ser processado.
+2. **Tokens de Saída (Resposta)**: 150 tokens  
+   - Exemplo: Resumo simplificado gerado pela API.
+
+**Total de Tokens por Solicitação**:  
+200 (entrada) + 150 (saída) = **350 tokens por solicitação**.
+
+---
+
+### Cálculo do Custo por Solicitação
+
+- **Custo por 1.000 tokens**: $0.0015  
+- **Custo por 350 tokens**:  
+  \[
+  350 \, \text{tokens} \times \frac{\$0.0015}{1000} = \$0.000525
+  \]
+
+---
+
+### Quantidade de Solicitações com $5
+
+Com um saldo de **$5**, o número de solicitações possíveis é:
+\[
+\frac{5}{0.000525} \approx 9.523 \, \text{solicitações}
+\]
+
+Arredondando para baixo, você poderá realizar **9.523 solicitações** com $5.
+
+---
+
+## Simulação de Requisição e Resposta
+
+### Requisição (GET)
+https://86q4d248ah.execute-api.us-east-2.amazonaws.com/dev/resume?q=saude%20mental
+
+### Resposta (JSON)
+```json
+[
+  {
+    "titulo": "Políticas culturais e saúde mental na infância: políticas públicas de cultura e sua importância para o desenvolvimento da saúde mental das crianças",
+    "link": "https://www.periodicos.capes.gov.br/index.php/acervo/buscador.html?task=detalhes&source=&id=W4395690089",
+    "publicacao": "Artigo",
+    "titulo_completo": "Políticas culturais e saúde mental na infância: políticas públicas de cultura e sua importância para o desenvolvimento da saúde mental das crianças",
+    "ano": "2024",
+    "instituicao": "Servicios Academicos Intercontinentales",
+    "volume": "Volume: 16",
+    "issue": "Issue: 4",
+    "linguagem": "Linguagem: Português",
+    "doi": "10.55905/cuadv16n4-136",
+    "issn": "1989-4155",
+    "autores": "Antônio Nacílio Sousa dos Santos, Francisco de Assis de Araújo Júnior, Carlos Augusto Marinho de Sousa, Carlos Rigor Neves, José Maria Nogueira Neto",
+    "resumo": "São vários os aspectos que impactam positivamente no desenvolvimento da saúde mental de uma criança, dentre os quais se destacam as políticas públicas culturais...",
+    "resumo_ia": "O artigo destaca a importância das políticas públicas culturais para a saúde mental das crianças..."
+  }
+]
+```
+
+### Conclusão
+
+Com um saldo de $5, é possível realizar cerca de 9.523 solicitações ao modelo GPT-4o-mini, considerando um tamanho médio de entrada de 200 tokens e saída de 150 tokens por solicitação.
+
+Essa abordagem garante que o modelo seja uma solução altamente econômica para gerar resumos e análises de texto com alta qualidade e escalabilidade.
+
+
+
+
 
 ---
 
 ## Contato
 
 Caso tenha dúvidas ou queira saber mais sobre o projeto, entre em contato pelo número 📱 **+55 88 99929-7262** ou envie um e-mail para [contato@sciflow.com](mailto:contato@sciflow.com).
+
+
