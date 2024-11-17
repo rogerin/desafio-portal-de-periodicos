@@ -51,16 +51,17 @@ A solução buscará artigos relevantes, resumirá o conteúdo e retornará dire
 - **WhatsApp API**: Interface para interação com os usuários.
 - **OpenAI GPT-4**: Gera resumos simplificados dos artigos.
 ---
+
 ## Tabela de Preços do GPT-4o-mini
 
-O custo por token no modelo **GPT-4o-mini** é muito acessível, permitindo realizar diversas solicitações com baixo custo. Abaixo, segue a tabela de preços:
+O custo por token no modelo **GPT-4o-mini** é bastante acessível, tornando-o ideal para operações em larga escala. Confira a tabela de preços:
 
 | **Tipo de Solicitação**           | **Preço por 1.000 tokens (USD)** |
 |-----------------------------------|----------------------------------|
 | Entrada + Saída (Combined)        | $0.0015                         |
 
-> **Nota**: 
-> - Tokens incluem palavras do prompt (entrada) e da resposta (saída).
+> **Nota**:  
+> - Tokens incluem palavras do prompt (entrada) e da resposta (saída).  
 > - Aproximadamente, 1.000 tokens correspondem a 750 palavras.
 
 ---
@@ -69,9 +70,9 @@ O custo por token no modelo **GPT-4o-mini** é muito acessível, permitindo real
 
 ### Suposições
 1. **Tokens de Entrada (Prompt)**: 200 tokens  
-   - Exemplo: O texto do resumo do artigo enviado para ser processado.
+   - Exemplo: O texto enviado para análise, como o resumo do artigo.
 2. **Tokens de Saída (Resposta)**: 150 tokens  
-   - Exemplo: Resumo simplificado gerado pela API.
+   - Exemplo: Resumo gerado pela API OpenAI.
 
 **Total de Tokens por Solicitação**:  
 200 (entrada) + 150 (saída) = **350 tokens por solicitação**.
@@ -95,15 +96,19 @@ Com um saldo de **$5**, o número de solicitações possíveis é:
 \frac{5}{0.000525} \approx 9.523 \, \text{solicitações}
 \]
 
-Arredondando para baixo, você poderá realizar **9.523 solicitações** com $5.
+Arredondando para baixo, é possível realizar **9.523 solicitações** com $5.
 
 ---
 
 ## Simulação de Requisição e Resposta
 
+
 ### Requisição (GET)
 https://86q4d248ah.execute-api.us-east-2.amazonaws.com/dev/resume?q=saude%20mental
 
+---
+
+## Simulação de Requisição e Resposta
 ### Resposta (JSON)
 ```json
 [
@@ -131,9 +136,6 @@ https://86q4d248ah.execute-api.us-east-2.amazonaws.com/dev/resume?q=saude%20ment
 Com um saldo de $5, é possível realizar cerca de 9.523 solicitações ao modelo GPT-4o-mini, considerando um tamanho médio de entrada de 200 tokens e saída de 150 tokens por solicitação.
 
 Essa abordagem garante que o modelo seja uma solução altamente econômica para gerar resumos e análises de texto com alta qualidade e escalabilidade.
-
-
-
 
 
 ---
