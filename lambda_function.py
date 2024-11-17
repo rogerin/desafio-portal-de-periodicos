@@ -67,9 +67,33 @@ def summarize_with_openai(resumo):
     result = response.json()
     return result["choices"][0]["message"]["content"].strip()
 
+
+# Função para enviar o resumo para a API do OpenAI e obter o resumo simplificado
+def summarize_with_openai_for_kids(resumo):
+    prompt = f"Resuma esse texto desse artigo para facilitar uma criança entender o seu conteúdo e facilite o entendimento de forma ludica, mas sem fuga de tema.\n\nResumo: {resumo}"
+    headers = {
+        "Authorization": f"Bearer {OPENAI_API_KEY}",
+        "Content-Type": "application/json"
+    }
+    data = {
+        "model": "gpt-4o-mini",  # Trocar o modelo aqui
+        "messages": [
+            {"role": "system", "content": "Você é um assistente que resume artigos para facilitar o entendimento para crianças."},
+            {"role": "user", "content": prompt}
+        ],
+        "max_tokens": 150,
+        "temperature": 0.7
+    }
+    response = requests.post(OPENAI_API_URL, headers=headers, json=data)
+    response.raise_for_status()
+    result = response.json()
+    return result["choices"][0]["message"]["content"].strip()
+
+
 # Função Lambda Handler
 def lambda_handler(event, context):
     logging.info(f"Evento recebido: {json.dumps(event, indent=4)}")
+    print(event)
     query = event.get('queryStringParameters', {}).get('q', None)
     if not query:
         return {
@@ -111,9 +135,12 @@ def fetch_and_process_articles(query):
         # Adicionar o resumo gerado pela API do OpenAI
         if "resumo" in artigo and artigo["resumo"] != "Não informado":
             artigo["resumo_ia"] = summarize_with_openai(artigo["resumo"])
+            artigo["resumo_ia_for_kids"] = summarize_with_openai_for_kids(artigo["resumo"])
+            
         else:
             artigo["resumo_ia"] = "Não disponível"
-        
+            artigo["resumo_ia_for_kids"] = "Não disponível"
+            
         return [artigo]  # Retorna apenas o primeiro artigo com detalhes
 
     return []
