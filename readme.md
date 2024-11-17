@@ -145,3 +145,8 @@ Essa abordagem garante que o modelo seja uma solução altamente econômica para
 Caso tenha dúvidas ou queira saber mais sobre o projeto, entre em contato pelo número 📱 **+55 88 99929-7262** ou envie um e-mail para [contato@sciflow.com](mailto:contato@sciflow.com).
 
 
+
+
+# TESTE de maneira simples!!
+
+![Arquitetura do Projeto](./src/img/sciflow.png)
