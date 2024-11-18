@@ -148,5 +148,4 @@ Caso tenha dúvidas ou queira saber mais sobre o projeto, entre em contato pelo 
 
 
 # TESTE de maneira simples!!
-
-![Arquitetura do Projeto](./src/img/sciflow.png)
+<img src="./src/img/sciflow.png" alt="Arquitetura do Projeto" style="width:50%;">
